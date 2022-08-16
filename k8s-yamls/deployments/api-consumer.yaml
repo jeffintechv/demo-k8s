@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-consumer
+  namespace: demo
+  labels:
+    app: api-consumer
+    environment: dev
+    tier: backend
+    project: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-consumer
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: api-consumer
+        environment: dev
+        tier: backend
+        project: demo
+    spec:
+      containers:
+      - name: api-consumer
+        image: api-consumer
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+              name: api-consumer

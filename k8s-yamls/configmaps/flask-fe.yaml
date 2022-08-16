@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flaskfe
+  namespace: demo
+  labels:
+    app: flaskfe
+    environment: dev
+    tier: frontend
+    project: demo
+data:
+  API_HOST: "http://flask-api:8080"

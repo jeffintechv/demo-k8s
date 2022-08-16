@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api
+  namespace: demo
+  labels:
+    app: flask-api
+    environment: dev
+    tier: backend
+    project: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-api
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: flask-api
+        environment: dev
+        tier: backend
+        project: demo
+    spec:
+      containers:
+      - name: flask-api
+        image: flask-api
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        envFrom:
+          - configMapRef:
+              name: api-consumer
+          - configMapRef:
+              name: flaskapi-database
+          - secretRef:
+              name: flaskapi-database

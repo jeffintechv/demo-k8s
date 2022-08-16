@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: demo
+  labels:
+    app: mysql
+    environment: dev
+    tier: database
+    project: demo
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+        environment: dev
+        tier: database
+        project: demo
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0.30
+        envFrom:
+          - configMapRef:
+              name: mysql
+          - secretRef:
+              name: mysql
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-volume
+        persistentVolumeClaim:
+          claimName: mysql-volume

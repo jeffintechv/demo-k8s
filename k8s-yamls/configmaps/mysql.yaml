@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: demo
+  labels:
+    app: mysql
+    environment: dev
+    tier: database
+    project: demo
+data:
+  MYSQL_DATABASE: "flaskapi"

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-api
+  namespace: demo
+  labels:
+    environment: dev
+    tier: backend
+    project: demo
+spec:
+  selector:
+        app: flask-api
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 5000

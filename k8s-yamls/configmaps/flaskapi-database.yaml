@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flaskapi-database
+  namespace: demo
+  labels:
+    app: flaskapi
+    environment: dev
+    tier: database
+    project: demo
+data:
+  DB_HOST: mysql
+  DB_NAME: flaskapi

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-fe
+  namespace: demo
+  labels:
+    app: flask-fe
+    environment: dev
+    tier: frontend
+    project: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-fe
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: flask-fe
+        environment: dev
+        tier: frontend
+        project: demo
+    spec:
+      containers:
+      - name: flask-fe
+        image: flask-fe
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        envFrom:
+          - configMapRef:
+              name: flaskfe

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-consumer
+  namespace: demo
+  labels:
+    app: api-consumer
+    environment: dev
+    tier: backend
+    project: demo
+data:
+  CONSUMER_DELAY: "30"
+  CONSUMER_TOKEN: "Ghstwi637393kkasdh11"
+  API_ENDPOINT: "http://flask-api:8080"

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DEMO</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+
+    <div class="container justify-content-md-center">
+  		<div class="row text-center">
+  			<div class="col-md-4"></div>
+  			<div class="col-md-4">
+          <h1>DEMO k8s</h1>
+          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+          <hr>
+        </div>
+  			<div class="col-md-4"></div>
+  		</div>
+			<div class="row">
+        <div class="col-md-2"></div>
+
+  			   <div class="col-md-8">
+             <div class="table-responsive">
+               <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Success</th>
+                    <th scope="col">Failed</th>
+                    <th scope="col">Added @</th>
+                    <th scope="col">Completed @</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                {%for l in loadtest%}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{l['count']}}</td>
+                    <td>{{l['status']}}</td>
+                    <td>{{l['success']}}</td>
+                    <td>{{l['failed']}}</td>
+                    <td>{{l['requested_ts']}}</td>
+                    <td>{{l['completed_ts']}}</td>
+                  </tr>
+                {%endfor%}
+
+                </tbody>
+              </table>
+
+            </div>
+            <a href="/loadtest/clear" class="btn btn-danger">Clear Counter</a>
+           </div>
+           <div class="col-md-2"></div>
+       </div>
+
+       <div class="row">
+         <hr>
+         <div class="col-md-2"></div>
+   			   <div class="col-md-8">
+
+             <form class="row form-inline" action="/loadtest/add" method="post">
+              <div class="col-auto">
+                <label for="count" class="visually-hidden">New Load Test</label>
+                <input type="text" class="form-control" id="inputcount" name="inputcount" placeholder="Count">
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+              </div>
+
+            </form>
+
+          </div>
+        <div class="col-md-2"></div>
+      </div>
+
+
+
+      </div>
+	</body>
+</html>
