@@ -54,6 +54,12 @@ docker build -t flask-fe .
 echo -e "\n\tLoading image into minikube\n"
 minikube image load flask-fe:latest
 
+cd $WORKING_DIR
+
+cd ../ENVOY
+docker build -t edge-envoy .
+echo -e "\n\tLoading image into minikube\n"
+minikube image load edge-envoy:latest
 
 echo -e "\t#################################################"
 echo -e "\t#################################################"

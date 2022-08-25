@@ -47,6 +47,18 @@ if [ $? -ne 0 ]; then echo -e "\n\tERROR in creating application resources. Exit
 
 cd $WORKING_DIR
 
+echo -e "\t#########################################################"
+echo -e "\tCreating application resources in ENVOY"
+echo -e "\t#########################################################\n"
+
+cd ENVOY && \
+  kubectl create -f service.yaml && \
+  kubectl create -f deployment.yaml
+
+if [ $? -ne 0 ]; then echo -e "\n\tERROR in creating application resources. Exiting..";exit 101; else echo -e "\n\tCreated APPLICATION resources\n"; fi
+
+cd $WORKING_DIR
+
 echo -e "\t#################################################"
 echo -e "\t#################################################"
 echo -e "\t#\t\t\t\t\t\t#"

@@ -10,7 +10,17 @@ echo -e "\t#############################################\n"
 echo -e "\tNOTE :- minikube is not stopping in this cleanup\n"
 
 
+echo -e "\t#########################################################"
+echo -e "\tRemoving application resources in ENVOY"
+echo -e "\t#########################################################\n"
 
+cd ENVOY && \
+  kubectl delete -f deployment.yaml && \
+  kubectl delete -f service.yaml
+
+if [ $? -ne 0 ]; then echo -e "\n\tERROR in deleting application resources. Exiting..";exit 101; else echo -e "\n\tRemoved APPLICATION resources\n"; fi
+
+cd $WORKING_DIR
 
 echo -e "\t#########################################################"
 echo -e "\tRemoving application resources in APPLICATION-K8S-YAMLS"
