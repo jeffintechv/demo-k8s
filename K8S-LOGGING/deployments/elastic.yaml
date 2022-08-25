@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: elasticsearch
-  namespace: logging
+  namespace: demo
   labels:
     tier: logging
 spec:
@@ -11,7 +11,7 @@ spec:
       component: elasticsearch
   template:
     metadata:
-      namespace: logging
+      namespace: demo
       labels:
         component: elasticsearch
         tier: logging
@@ -29,7 +29,7 @@ spec:
         resources:
           limits:
             cpu: 500m
-            memory: 4Gi
+            memory: 2Gi
           requests:
             cpu: 500m
-            memory: 4Gi
+            memory: 2Gi

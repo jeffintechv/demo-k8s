@@ -1,17 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-fe
+  name: edge-envoy
   namespace: demo
   labels:
     environment: dev
     tier: frontend
     project: demo
 spec:
+  type: NodePort
   selector:
-        app: flask-fe
+        app: edge-envoy
   ports:
     - name: http
       protocol: TCP
-      port: 8080
-      targetPort: 5000
+      port: 80
+      targetPort: 8080
+      nodePort: 30003

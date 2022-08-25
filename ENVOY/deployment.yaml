@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-envoy
+  namespace: demo
+  labels:
+    app: edge-envoy
+    environment: dev
+    tier: frontend
+    project: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edge-envoy
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: edge-envoy
+        environment: dev
+        tier: frontend
+        project: demo
+    spec:
+      containers:
+      - name: edge-envoy
+        image: edge-envoy
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

@@ -37,7 +37,6 @@ echo -e "\tCreating application resources in APPLICATION-K8S-YAMLS"
 echo -e "\t#########################################################\n"
 
 cd APPLICATION-K8S-YAMLS && \
-  kubectl create -f namespace.yaml && \
   kubectl create -f pvcs/ && \
   kubectl create -f secrets/ && \
   kubectl create -f configmaps/ && \
