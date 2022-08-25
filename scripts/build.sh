@@ -56,6 +56,10 @@ minikube image load flask-fe:latest
 
 cd $WORKING_DIR
 
+echo -e "\t############################################"
+echo -e "\tBuilding docker image for envoy"
+echo -e "\t############################################\n"
+
 cd ../ENVOY
 docker build -t edge-envoy .
 echo -e "\n\tLoading image into minikube\n"

@@ -179,7 +179,7 @@
                   "endpoint": {
                     "address": {
                       "socket_address": {
-                        "address": "kibana.logging",
+                        "address": "kibana",
                         "port_value": 5601
                       }
                     }
@@ -203,7 +203,7 @@
                   "endpoint": {
                     "address": {
                       "socket_address": {
-                        "address": "elasticsearch.logging",
+                        "address": "elasticsearch",
                         "port_value": 9200
                       }
                     }
