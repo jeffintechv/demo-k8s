@@ -13,6 +13,7 @@ help:
 	@echo "make create		# create demo application in minikube"
 	@echo "make build		# build docker images and load it to minikube"
 	@echo "make clean		# Cleaning the resources created for demo"
+	@echo "make urls		# Show urls configured in ENVOY"
 	@echo "#####################################################################"
 
 create:
@@ -20,6 +21,9 @@ create:
 
 build:
 	./scripts/build.sh
+
+urls:
+	./scripts/urls.sh
 
 clean:
 	./scripts/clean.sh
